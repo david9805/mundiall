@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cotizaciones</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+<script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+<style>
+
+#datepicker{width:180px; margin: 0 20px 20px 0px;}
+#datepicker > span:hover{cursor: pointer;}
+#datepicker2{width:180px; margin: 0 20px 20px 0px;}
+#datepicker2 > span:hover{cursor: pointer;}
+body{
+        background-color: rgb(174, 236, 223);
+      }
+</style>
+<script>
+
+// Buscador
+/*function buscarEquipos()
+
+{
+
+    const tableReg = document.getElementById('datos');
+
+    const searchText = document.getElementById('searchTerm').value.toLowerCase();
+
+    let total = 0;
+
+
+
+    // Recorremos todas las filas con contenido de la tabla
+
+    for (let i = 1; i < tableReg.rows.length; i++) {
+
+        // Si el td tiene la clase "noSearch" no se busca en su cntenido
+
+        if (tableReg.rows[i].classList.contains("noSearch")) {
+
+            continue;
+
+        }
+
+
+
+        let found = false;
+
+        const cellsOfRow = tableReg.rows[i].getElementsByTagName('td');
+
+        // Recorremos todas las celdas
+
+        for (let j = 0; j < cellsOfRow.length && !found; j++) {
+
+            const compareWith = cellsOfRow[j].innerHTML.toLowerCase();
+
+            // Buscamos el texto en el contenido de la celda
+
+            if (searchText.length == 0 || compareWith.indexOf(searchText) > -1) {
+
+                found = true;
+
+                total++;
+
+            }
+
+        }
+
+        if (found) {
+
+            tableReg.rows[i].style.display = '';
+
+        } else {
+
+            // si no ha encontrado ninguna coincidencia, esconde la
+
+            // fila de la tabla
+
+            tableReg.rows[i].style.display = 'none';
+
+        }
+
+    }
+
+
+
+    // mostramos las coincidencias
+
+    const lastTR=tableReg.rows[tableReg.rows.length-1];
+
+    const td=lastTR.querySelector("td");
+
+    lastTR.classList.remove("hide", "red");
+
+    if (searchText == "") {
+
+        lastTR.classList.add("hide");
+
+    } else if (total) {
+
+        td.innerHTML="Se ha encontrado "+total+" coincidencia"+((total>1)?"s":"");
+
+    } else {
+
+        lastTR.classList.add("red");
+
+        td.innerHTML="No se han encontrado coincidencias";
+
+    }
+
+}*/
+
+
+
+function seleccionarEquipo (ide){
+    console.log(ide);
+    document.getElementById('IDEQUIPO').value = ide.IDLISTADOEQUIPO;
+    document.getElementById('EQUIPO').value = ide.EQUIPO;
+    document.getElementById('SERIAL').value = ide.SERIAL;
+    $('#equiposListado').modal('hide');
+}
+
+function seleccionarCliente (id){
+    console.log(id);
+    document.getElementById('IDCLIENTE').value = id.IDCLIENTE;
+    document.getElementById('NOMBRE1').value = id.NOMBRE1+ ' ' + id.APELLIDO1;
+    document.getElementById('DOCUMENTO').value = id.DOCUMENTO;
+    $('#clientes').modal('hide');
+}
+
+
+</script>
+</head>
+<body>
+
+  
+    <div class="modal fade" id="equiposListado" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Equipo</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped text-center" id="datos">
+                    <thead>
+                        <tr class="bg-primary text-white">
+                            <th scope="col">EQUIPO</th>
+                            <th scope="col">SERIAL</th>
+                            <th scope="col">SELECCIONAR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% listado.forEach((user)=> { %>               
+                        <tr>
+                            <td><%= user.EQUIPO %></td>
+                            <td><%= user.SERIAL %></td>                            
+                            <td><button  class="btn btn-outline-info" onclick="seleccionarEquipo(<%= JSON.stringify(user) %>)"><i class='bx bxs-hand-up'></i></button>                        
+                        </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">        
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+  
+  <div class="modal fade" id="clientes" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Cliente</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">            
+            <table class="table table-striped text-center" id="datos1">
+                <thead>
+                    <tr class="bg-primary text-white">
+                        <th scope="col">NOMBRE</th>
+                        <th scope="col">APELLIDO</th>
+                        <th scope="col">DOCUMENTO</th>
+                        <th scope="col">EMAIL</th>
+                        <th scope="col">CELULAR</th>
+                        <th scope="col">SELECCIONAR</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% cliente.forEach((user)=> { %>               
+                    <tr>
+                        <td><%= user.NOMBRE1 %></td>
+                        <td><%= user.APELLIDO1 %></td>
+                        <td><%= user.DOCUMENTO %></td>
+                        <td><%= user.EMAIL %></td>
+                        <td><%= user.TELEFONO2 %></td>                        
+                        <td><button  class="btn btn-outline-info" onclick="seleccionarCliente(<%= JSON.stringify(user) %>)"><i class='bx bxs-hand-up'></i></button>                        
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+        <div class="modal-footer">        
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>          
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-4">
+    <div class="card border-secondary">
+    <div class="card-header">Editar Registro</div>
+    <div class="card-body">
+        
+        <form action="/updateAgendamiento" method ="POST">
+            <% if (equipos) {%>                      
+                <input type="text" class="form-control" id="IDPRESTAMOEQUIPOS" name="IDPRESTAMOEQUIPOS" value="<%= equipos.IDPRESTAMOEQUIPO %>" tabindex="1" hidden>
+            <% } %>
+            <div class="row mt-1">
+                <div class="col-2">
+                    <label for="user" class="form-label">EQUIPO</label>
+                        
+                        <button type="button" class="form-control btn btn-primary" data-bs-toggle="modal" data-bs-target="#equiposListado" >
+                            Seleccionar Equipo
+                        </button> 
+                        <% if (equipos) { %>                      
+                        <input type="text" class="form-control" id="IDEQUIPO" name="IDEQUIPO" value="<%= equipos.IDEQUIPO %>" tabindex="1" hidden>
+                        <% } %>
+                </div>
+                <div class="col-5">
+                    <label for="user" class="form-label">NOMBRE EQUIPO</label>
+                    <% if (equipos) { %>
+                        <input type="text" class="form-control" id="EQUIPO" name="EQUIPO" value = "<%= equipos.EQUIPO %>" tabindex="1" required>
+                    <% } %>
+                </div>
+                <div class="col-5">
+                    <label for="user" class="form-label">SERIAL</label>
+                    <% if (equipos) { %>
+                        <input type="text" class="form-control" id="SERIAL" name="SERIAL" value="<%= equipos.SERIAL %>" tabindex="1" required>
+                    <% } %>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-2">
+                    <label for="user" class="form-label">CLIENTE</label>
+                        
+                        <button type="button" class="form-control btn btn-primary" data-bs-toggle="modal" data-bs-target="#clientes">
+                            Seleccionar Cliente
+                        </button>
+                        <% if (equipos) { %>                        
+                            <input type="text" class="form-control" id="IDCLIENTE" name="IDCLIENTE" value="<%= equipos.IDCLIENTE %>" tabindex="1" hidden>
+                        <% } %>
+                </div>
+                <div class="col-5">
+                    <label for="user" class="form-label">NOMBRE </label>
+                    <% if (equipos) { %> 
+                        <input type="text" class="form-control" id="NOMBRE1" name="NOMBRE1" value="<%= equipos.NOMBRECOMPLETO %>" tabindex="1" required>
+                    <% } %>
+                </div>
+                <div class="col-5">
+                    <label for="user" class="form-label">DOCUMENTO</label>
+                    <% if (equipos) { %> 
+                        <input type="text" class="form-control" id="DOCUMENTO" name="DOCUMENTO" value="<%= equipos.DOCUMENTO %>" tabindex="1" required>
+                    <% } %> 
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col">
+                    <label for="user" class="form-label">DOCUMENTO GARANTIA</label>
+                    <select id="IDDOCUMENTOGARANTIA" name="IDDOCUMENTOGARANTIA" class="form-select" aria-label="Default select example">
+                        <% documentosGarantias.forEach((user)=> {%>
+                            <% if (equipos) { %>
+                                <option   <%= user.IDDOCUMENTO==equipos.IDDOCUMENTOGARANTIA ? "selected" : "" %>  value="<%= user.IDDOCUMENTO %>"><%= user.DOCUMENTO %></option> 
+                            <% } %>                           
+                        <% }) %>
+                    </select>                        
+                    <% if (equipos) { %>
+                        <input type="text" class="form-control" id="DOCUMENTOGARANTIA" name="DOCUMENTOGARANTIA" value="<%= equipos.DOCUMENTOGARANTIA %>" tabindex="1" hidden>
+                    <% } %> 
+                </div>
+                <div class="col">
+                    <label for="user" class="form-label">ASUNTO ENTREGA</label>
+                    <select id="IDOBSERVACIONENTREGA" name="IDOBSERVACIONENTREGA" class="form-select" aria-label="Default select example">
+                        <% asuntoEntrega.forEach((user)=> {%>
+                            <% if (equipos) { %>
+                                <option  <%= user.IDOBSERVACIONESPRESTAMOS==equipos.IDOBSERVACIONENTREGA ? "selected" : "" %> value="<%= user.IDOBSERVACIONESPRESTAMOS %>"><%= user.OBSERVACION %></option>                                                                
+                            <% } %> 
+                        <% }) %>
+                    </select>
+                    <% if (equipos) { %> 
+                        <input type="text" class="form-control" id="OBSERVACIONENTREGA" name="OBSERVACIONENTREGA" value="<%= equipos.OBSERVACIONENTREGA %>"  tabindex="1" hidden>
+                    <% } %>
+                </div>
+            </div>
+            <div class="row mt-1">                
+                <div class="col">
+                    <label for="user" class="form-label">OBSERVACIONES ENTREGA</label>
+                    <% if (equipos) { %> 
+                        <textarea class="form-control" id="OBSERVACIONESDEENTREGA" name="OBSERVACIONESDEENTREGA" rows="3" required><%= equipos.OBSERVACIONESDENETREGA %></textarea>
+                    <% } %>
+                </div>
+            </div>
+                <hr>            
+                <button type="submit" class="btn btn-primary" tabindex="5" id="botonGuardar">Guardar</button>
+                <a href="/inicio" class="btn btn-danger">Cancelar</a>
+            </form>
+        </div>
+        </div>
+    </div> 
+    <script>
+
+        $('#datos').DataTable(
+        {
+            "language": 
+            {
+                "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+            }
+        } 
+        ); 
+        
+        $('#datos1').DataTable(
+        {
+            "language": 
+            {
+                "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+            }
+        } 
+        ); 
+
+        $(document).ready(function(){
+            $('#IDOBSERVACIONENTREGA').change(function(){
+                var sel = $("#IDOBSERVACIONENTREGA option:selected").html();
+                $("#OBSERVACIONENTREGA").val(sel);
+                console.log(sel);
+            });
+
+            $('#IDDOCUMENTOGARANTIA').change(function(){
+                var sel = $("#IDDOCUMENTOGARANTIA option:selected").html();
+                $("#DOCUMENTOGARANTIA").val(sel);
+                console.log(sel);
+            });
+        });
+
+        $(document).ready(function(){
+            $('#botonGuardar').click(function(){
+                var sel = $("#IDOBSERVACIONENTREGA option:selected").html();
+                $("#OBSERVACIONENTREGA").val(sel);
+                console.log(sel);
+
+                var sel = $("#IDDOCUMENTOGARANTIA option:selected").html();
+                $("#DOCUMENTOGARANTIA").val(sel);
+                console.log(sel);
+            });
+        });
+    </script>       
+</body>
+</html>
+

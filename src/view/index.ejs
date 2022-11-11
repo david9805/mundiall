@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <title>Inicio</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+      body{
+        background-color: rgb(174, 236, 223);
+      }
+
+          /*SPINNER*/
+          #overlay{	
+          position: fixed;
+          top: 0;
+          z-index: 100;
+          width: 100%;
+          height:100%;
+          display: none;
+          background: rgba(0,0,0,0.6);
+        }
+        .cv-spinner {
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;  
+        }
+        .spinner {
+          width: 40px;
+          height: 40px;
+          border: 4px #ddd solid;
+          border-top: 4px #2e93e6 solid;
+          border-radius: 50%;
+          animation: sp-anime 0.8s infinite linear;
+        }
+        @keyframes sp-anime {
+          100% { 
+            transform: rotate(360deg); 
+          }
+        }
+
+    </style>
+</head>
+<body>  
+
+  <div id="overlay">
+    <div class="cv-spinner">
+      <span class="spinner"></span>
+    </div>
+  </div>  
+  
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-2">
+        
+      </div>
+      <div class="col-8 align-self-center  mt-5">
+        <div class="card mb-3">
+          <img src="https://www.comprasinteligentes.co/ccfontanar/fondo.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Login</h5>
+            <p class="card-text">
+            <form action="/ingreso" method ="POST">
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">DOCUMENTO</label>
+                <input type="text" class="form-control" id="DOCUMENTO" name="DOCUMENTO">
+              </div>
+              <div class="mb-3">
+               <button type="submit" onclick="redirigir()" class="btn btn-primary">Ingresar</button>
+              </div>
+            </form>
+          </p>
+          </div>
+        </div>        
+      </div>
+      <div class="col-2 align-self-end">        
+     </div>
+    </div>
+  </div>
+   
+    
+    <% if (cantidad==true) { %>
+      <script>
+       const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+
+      Toast.fire({
+        icon: 'error',
+        title: 'Usuario o Contraseña incorrectas'
+      })
+     </script>
+     <% } %>
+<script>        
+     
+                
+    function redirigir()
+    {   
+        
+        /*var usuario = LOGIN.value;
+        var ruta = window.location.origin;
+	      var rutafinal = ruta+"/agendamiento/"+usuario;
+        console.log(rutafinal);*/
+        
+        $("#overlay").fadeIn(1000);                                     
+        setTimeout(function(){
+            window.location = rutafinal;
+            console.log(rutafinal);          
+            $("#overlay").fadeOut(1000);                
+        },1000);
+        
+    }   
+</script>
+</body>
+</html>

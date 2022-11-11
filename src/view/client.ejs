@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cliente</title>
+<link rel="shortcut icon" href="https://comprasinteligentes.co/ccunicentropereira/logo.jpg">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<style>
+    body {
+        background-image: url("https://comprasinteligentes.co/ccunicentropereira/login.jpeg");
+        background-repeat: no-repeat;
+          /* Fijamos la imagen a la ventana para que no supere el alto de la ventana */
+          background-attachment: fixed;
+          background-size: 100% 100%;
+    }
+    canvas {
+    width: 1260px;
+    height: 500px;
+    background-color: #ffffff;
+    
+    
+}
+#firma{
+    border: black 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;      
+}
+.header .navbar {
+  background-color:#df3b51 !important;  
+}
+
+button{
+    color: #ffffff !important;
+}
+li {
+    padding-left: 20px;
+}
+ /*SPINNER*/
+ #overlay{	
+        position: fixed;
+        top: 0;
+        z-index: 100;
+        width: 100%;
+        height:100%;
+        display: none;
+        background: rgba(0,0,0,0.6);
+      }
+      .cv-spinner {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;  
+      }
+      .spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px #ddd solid;
+        border-top: 4px #2e93e6 solid;
+        border-radius: 50%;
+        animation: sp-anime 0.8s infinite linear;
+      }
+      @keyframes sp-anime {
+        100% { 
+          transform: rotate(360deg); 
+        }
+      }
+      .is-hide{
+        display:none;
+      }
+</style>
+<script>
+    function client(id){
+        var ruta = window.location.origin;
+        $("#overlay").fadeIn(1000); 
+        setTimeout(function(){
+                window.location = ruta +"/ccunicentropereira/info/cliente/"+id;  
+                $("#overlay").fadeOut(1000);   
+            },1000);                 
+    }
+    function table(id){
+        var ruta = window.location.origin;
+        $("#overlay").fadeIn(1000); 
+        setTimeout(function(){
+                window.location = ruta +"/ccunicentropereira/info/consulta/"+id; 
+                $("#overlay").fadeOut(1000);    
+            },1000);             
+    }
+
+    function back(){
+        var ruta = window.location.origin;
+        $("#overlay").fadeIn(1000);
+        setTimeout(function(){
+                window.location = ruta +"/ccunicentropereira/info/";
+                $("#overlay").fadeOut(1000);      
+            },1000);             
+    }
+</script>
+</head>
+<body>
+    <div id="overlay">
+        <div class="cv-spinner">
+          <span class="spinner"></span>
+        </div>
+      </div>  
+    <header class="header">
+        <% if (proveedor) { %> 
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">                
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <div class="btn-group">                                                                            
+                    <li class="nav-item active">
+                        <button type="button" class="btn btn-outline-info" onclick="client(<%= proveedor.DOCUMENTO %>)"><i class="fa-solid fa-person"></i>  Información cliente </button>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-outline-info" onclick="table(<%= proveedor.DOCUMENTO %>)"><i class="fa-solid fa-magnifying-glass"></i>  Consulta </button>
+                    </li>              
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-outline-info" onclick="back()"><i class="fa-solid fa-arrow-right-from-bracket"></i>  Regresar</button>
+                    </li>
+                </div> 
+            </ul>
+          </div>
+        </nav>
+        <% } %> 
+      </header>
+    <div class="container mt-4">
+        <div class="card border-secondary">
+        <div class="card-header">Nuevo Registro</div>
+        <div class="card-body">
+            
+            <form action="/proveedor" method ="POST">
+                <% if (proveedor) { %> 
+                <input hidden name="IDCLIENTE" id="IDCLIENTE" value="<%= proveedor.IDCLIENTE %>"> 
+                <% } %>
+                <div class="row">
+                    <div class="col">
+                        <label for="user" class="form-label">TIPO DOCUMENTO</label>
+                        <select id="IDTIPODOCUMENTO" name="IDTIPODOCUMENTO" class="form-select" aria-label="Default select example" tabindex="1" readonly>
+                            <% val2.forEach((user)=> {%>
+                                <% if (proveedor) { %>                                
+                                <option  <%= user.IDREFERENCIA==proveedor.IDTIPODOCUMENTO ? "selected" : "" %> value="<%= user.IDREFERENCIA %>" disabled><%= user.DESCRIPCION %></option>
+                                <% } %>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <div class="col">                      
+                        <label for="user" class="form-label">Documento</label>
+                        <% if (proveedor) { %>
+                            <input type="text" class="form-control" id="DOCUMENTO" name="DOCUMENTO" value="<%= proveedor.DOCUMENTO %>" tabindex="2" readonly>
+                        <% } %>   
+                    </div>
+                </div>                          
+                <div class="row">
+                    <div class="col">
+                        <label for="user" class="form-label">Nombre 1</label>
+                        <% if (proveedor) { %>
+                            <input type="text" class="form-control" id="NOMBRE1" name="NOMBRE1" value="<%= proveedor.NOMBRE1 %>" tabindex="3" readonly>
+                        <% } %>      
+                    </div>
+                    <div class="col">
+                        <label for="user" class="form-label">Nombre 2</label>
+                        <% if (proveedor) { %>
+                            <input type="text" class="form-control" id="NOMBRE2" name="NOMBRE2" value="<%= proveedor.NOMBRE2 %>" tabindex="4" readonly>
+                        <% } %>  
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="user" class="form-label">Apellido 1</label>
+                        <% if (proveedor) { %> 
+                            <input type="text" class="form-control" id="APELLIDO1" name="APELLIDO1" value="<%= proveedor.APELLIDO1 %>" tabindex="5" readonly>
+                        <% } %> 
+                    </div>
+                    <div class="col">
+                        <label for="user" class="form-label">Apellido 2</label>
+                        <% if (proveedor) { %> 
+                            <input type="text" class="form-control" id="APELLIDO2" name="APELLIDO2" value="<%= proveedor.APELLIDO2 %>" tabindex="6" readonly>
+                        <% } %>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="user" class="form-label">GENERO</label>
+                        <select id="IDSEXO" name="IDSEXO" class="form-select" aria-label="Default select example" tabindex="7" readonly>
+                            <% val3.forEach((user)=> {%>
+                                <% if (proveedor) { %>                                
+                                    <option  <%= user.IDREFERENCIA==proveedor.IDSEXO ? "selected" : "" %> value="<%= user.IDREFERENCIA %>" disabled><%= user.DESCRIPCION %></option>
+                                <% } %>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label for="user" class="form-label">CIUDAD</label>
+                        <select id="IDCIUDADRESIDENCIA" name="IDCIUDADRESIDENCIA" class="form-select" aria-label="Default select example" tabindex="8" >
+                            <% val4.forEach((user)=> {%>
+                                <% if (proveedor) { %>                                
+                                    <option   <%= user.IDREFERENCIA==proveedor.IDCIUDADRESIDENCIA ? "selected" : "" %> value="<%= user.IDREFERENCIA %>" disabled><%= user.DESCRIPCION %></option>
+                                <% } %>
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="user" class="form-label">Correo Electronico</label>
+                    <% if (proveedor) { %> 
+                        <input type="email" class="form-control" id="EMAIL" name="EMAIL" value="<%= proveedor.EMAIL %>" tabindex="9" readonly>
+                    <% } %>
+                </div>               
+                <div class="mb-3">
+                    <label for="user" class="form-label">Dirección</label>
+                    <% if (proveedor) { %> 
+                        <input type="text" class="form-control" id="DIRECCIONRESIDENCIA" name="DIRECCIONRESIDENCIA" value="<%= proveedor.DIRECCIONRESIDENCIA %>" tabindex="10" readonly>
+                    <% } %>
+                </div>                      
+            </form>
+        </div>
+        </div>
+    </div>
+  
+</body>
+</html>
+</html>
