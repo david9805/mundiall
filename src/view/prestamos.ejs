@@ -110,137 +110,301 @@
         </div>
       </nav>
     <form action="/actualizarResultados" method ="POST">
-      <div class="row mt-4">
-        <div class="col-3 ">
-          <img src="https://www.comprasinteligentes.co/ccfontanar/banderas/panelizquierdo.png" />
-        </div>
-        <div class="col-6  text-center">
+      <div class="container">
+          
           <div class="tab-content  " id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-a" role="tabpanel" aria-labelledby="nav-a-tab" tabindex="0">
             <H2>GRUPO A</H2>
             <hr>
-              
-              <% predi.forEach((user)=> {%>
-                <% if (user.GRUPO === 'A') { %>
-                  <div class="row mt-2">
-                    <div class="col border border-secondary">
-                      <img src="<%= user.IMAGENEQUIPO1 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO1 %><input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;margin-left: 30px;text-align: center;"> - 
-                      <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;margin-right: 30px;text-align: center;"><%= user.EQUIPO2 %><img src="<%= user.IMAGENEQUIPO2 %>" style="width:100px ; height:70px ; margin-left: 30px;" />
-                    </div>
-                </div>
-                <% } %>
-              <% }) %> 
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">EQUIPO 1</th>
+                      <th scope="col">MARCADOR</th>
+                      <th scope="col">EQUIPO 2</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    
+                    <% predi.forEach((user)=> {%>
+                      <tr>
+                      <% if (user.GRUPO === 'A') { %>
+                        <td scope="row">
+                            <img src="<%= user.IMAGENEQUIPO1 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO1 %>
+                        </td>
+                        <td>
+                              <input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;">                      
+
+                              <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;">               
+
+                        </td>
+                        <td>
+                            <img src="<%= user.IMAGENEQUIPO2 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO2 %>
+                        </td>
+                      <% } %>
+                    </tr>
+                    <% }) %>                     
+                    
+                  </tbody>
+                </table>
+                
           </div>
             <div class="tab-pane fade" id="nav-b" role="tabpanel" aria-labelledby="nav-b-tab" tabindex="0">
             <H2>GRUPO B</H2>
             <hr>
               
-              <% predi.forEach((user)=> {%>
-                <% if (user.GRUPO === 'B') { %>
-                  <div class="row mt-2">
-                    <div class="col border border-secondary">
-                      <img src="<%= user.IMAGENEQUIPO1 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO1 %><input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;margin-left: 30px;text-align: center;"> - 
-                      <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;margin-right: 30px;text-align: center;"><%= user.EQUIPO2 %><img src="<%= user.IMAGENEQUIPO2 %>" style="width:100px ; height:70px ; margin-left: 30px;" />
-                    </div>
-                </div>
-                <% } %>
-              <% }) %>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">EQUIPO 1</th>
+                  <th scope="col">MARCADOR</th>
+                  <th scope="col">EQUIPO 2</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                <% predi.forEach((user)=> {%>
+                  <tr>
+                  <% if (user.GRUPO === 'B') { %>
+                    <td scope="row">
+                        <img src="<%= user.IMAGENEQUIPO1 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO1 %>
+                    </td>
+                    <td>
+                          <input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;">                      
+
+                          <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;">               
+
+                    </td>
+                    <td>
+                        <img src="<%= user.IMAGENEQUIPO2 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO2 %>
+                    </td>
+                  <% } %>
+                </tr>
+                <% }) %>                     
+                
+              </tbody>
+            </table>
             </div>
             <div class="tab-pane fade" id="nav-c" role="tabpanel" aria-labelledby="nav-c-tab" tabindex="0">
               <H2>GRUPO C</H2>
               <hr>
               
-              <% predi.forEach((user)=> {%>
-                <% if (user.GRUPO === 'C') { %>
-                  <div class="row mt-2">
-                    <div class="col border border-secondary">
-                      <img src="<%= user.IMAGENEQUIPO1 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO1 %><input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;margin-left: 30px;text-align: center;"> - 
-                      <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;margin-right: 30px;text-align: center;"><%= user.EQUIPO2 %><img src="<%= user.IMAGENEQUIPO2 %>" style="width:100px ; height:70px ; margin-left: 30px;" />
-                    </div>
-                </div>
-                <% } %>
-              <% }) %>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">EQUIPO 1</th>
+                    <th scope="col">MARCADOR</th>
+                    <th scope="col">EQUIPO 2</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                  <% predi.forEach((user)=> {%>
+                    <tr>
+                    <% if (user.GRUPO === 'C') { %>
+                      <td scope="row">
+                          <img src="<%= user.IMAGENEQUIPO1 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO1 %>
+                      </td>
+                      <td>
+                            <input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;">                      
+  
+                            <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;">               
+  
+                      </td>
+                      <td>
+                          <img src="<%= user.IMAGENEQUIPO2 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO2 %>
+                      </td>
+                    <% } %>
+                  </tr>
+                  <% }) %>                     
+                  
+                </tbody>
+              </table>
             </div>
             <div class="tab-pane fade" id="nav-d" role="tabpanel" aria-labelledby="nav-d-tab" tabindex="0">
               <H2>GRUPO D</H2>
               <hr>
               
-              <% predi.forEach((user)=> {%>
-                <% if (user.GRUPO === 'D') { %>
-                  <div class="row mt-2">
-                    <div class="col border border-secondary">
-                      <img src="<%= user.IMAGENEQUIPO1 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO1 %><input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;margin-left: 30px;text-align: center;"> - 
-                      <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;margin-right: 30px;text-align: center;"><%= user.EQUIPO2 %><img src="<%= user.IMAGENEQUIPO2 %>" style="width:100px ; height:70px ; margin-left: 30px;" />
-                    </div>
-                </div>
-                <% } %>
-              <% }) %>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">EQUIPO 1</th>
+                    <th scope="col">MARCADOR</th>
+                    <th scope="col">EQUIPO 2</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                  <% predi.forEach((user)=> {%>
+                    <tr>
+                    <% if (user.GRUPO === 'D') { %>
+                      <td scope="row">
+                          <img src="<%= user.IMAGENEQUIPO1 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO1 %>
+                      </td>
+                      <td>
+                            <input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;">                      
+  
+                            <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;">               
+  
+                      </td>
+                      <td>
+                          <img src="<%= user.IMAGENEQUIPO2 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO2 %>
+                      </td>
+                    <% } %>
+                  </tr>
+                  <% }) %>                     
+                  
+                </tbody>
+              </table>
             </div>
             <div class="tab-pane fade" id="nav-e" role="tabpanel" aria-labelledby="nav-e-tab" tabindex="0">
               <H2>GRUPO E</H2>
               <hr>
               
-              <% predi.forEach((user)=> {%>
-                <% if (user.GRUPO === 'E') { %>
-                  <div class="row mt-2">
-                    <div class="col border border-secondary">
-                      <img src="<%= user.IMAGENEQUIPO1 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO1 %><input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;margin-left: 30px;text-align: center;"> - 
-                      <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;margin-right: 30px;text-align: center;"><%= user.EQUIPO2 %><img src="<%= user.IMAGENEQUIPO2 %>" style="width:100px ; height:70px ; margin-left: 30px;" />
-                    </div>
-                </div>
-                <% } %>
-              <% }) %>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">EQUIPO 1</th>
+                    <th scope="col">MARCADOR</th>
+                    <th scope="col">EQUIPO 2</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                  <% predi.forEach((user)=> {%>
+                    <tr>
+                    <% if (user.GRUPO === 'E') { %>
+                      <td scope="row">
+                          <img src="<%= user.IMAGENEQUIPO1 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO1 %>
+                      </td>
+                      <td>
+                            <input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;">                      
+  
+                            <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;">               
+  
+                      </td>
+                      <td>
+                          <img src="<%= user.IMAGENEQUIPO2 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO2 %>
+                      </td>
+                    <% } %>
+                  </tr>
+                  <% }) %>                     
+                  
+                </tbody>
+              </table>
             </div>
             <div class="tab-pane fade" id="nav-f" role="tabpanel" aria-labelledby="nav-f-tab" tabindex="0">
               <H2>GRUPO F</H2>
               <hr>
               
-              <% predi.forEach((user)=> {%>
-                <% if (user.GRUPO === 'F') { %>
-                  <div class="row mt-2">
-                    <div class="col border border-secondary">
-                      <img src="<%= user.IMAGENEQUIPO1 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO1 %><input  type="text" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;margin-left: 30px;text-align: center;"> - 
-                      <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;margin-right: 30px;text-align: center;"><%= user.EQUIPO2 %><img src="<%= user.IMAGENEQUIPO2 %>" style="width:100px ; height:70px ; margin-left: 30px;" />
-                    </div>
-                </div>
-                <% } %>
-              <% }) %>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">EQUIPO 1</th>
+                    <th scope="col">MARCADOR</th>
+                    <th scope="col">EQUIPO 2</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                  <% predi.forEach((user)=> {%>
+                    <tr>
+                    <% if (user.GRUPO === 'F') { %>
+                      <td scope="row">
+                          <img src="<%= user.IMAGENEQUIPO1 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO1 %>
+                      </td>
+                      <td>
+                            <input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;">                      
+  
+                            <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;">               
+  
+                      </td>
+                      <td>
+                          <img src="<%= user.IMAGENEQUIPO2 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO2 %>
+                      </td>
+                    <% } %>
+                  </tr>
+                  <% }) %>                     
+                  
+                </tbody>
+              </table>
             </div>
             <div class="tab-pane fade" id="nav-g" role="tabpanel" aria-labelledby="nav-g-tab" tabindex="0">
               <H2>GRUPO G</H2>
               <hr>
               
-              <% predi.forEach((user)=> {%>
-                <% if (user.GRUPO === 'G') { %>
-                  <div class="row mt-2">
-                    <div class="col border border-secondary">
-                      <img src="<%= user.IMAGENEQUIPO1 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO1 %><input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;margin-left: 30px;text-align: center;"> - 
-                      <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;margin-right: 30px;text-align: center;"><%= user.EQUIPO2 %><img src="<%= user.IMAGENEQUIPO2 %>" style="width:100px ; height:70px ; margin-left: 30px;" />
-                    </div>
-                </div>
-                <% } %>
-              <% }) %></div>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">EQUIPO 1</th>
+                    <th scope="col">MARCADOR</th>
+                    <th scope="col">EQUIPO 2</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                  <% predi.forEach((user)=> {%>
+                    <tr>
+                    <% if (user.GRUPO === 'G') { %>
+                      <td scope="row">
+                          <img src="<%= user.IMAGENEQUIPO1 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO1 %>
+                      </td>
+                      <td>
+                            <input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;">                      
+  
+                            <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;">               
+  
+                      </td>
+                      <td>
+                          <img src="<%= user.IMAGENEQUIPO2 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO2 %>
+                      </td>
+                    <% } %>
+                  </tr>
+                  <% }) %>                     
+                  
+                </tbody>
+              </table>
+            </div>
             <div class="tab-pane fade" id="nav-h" role="tabpanel" aria-labelledby="nav-h-tab" tabindex="0">
               <H2>GRUPO H</H2>
               <hr>
               
-              <% predi.forEach((user)=> {%>
-                <% if (user.GRUPO === 'H') { %>
-                  <div class="row mt-2">
-                    <div class="col border border-secondary">
-                      <img src="<%= user.IMAGENEQUIPO1 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO1 %><input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;margin-left: 30px;text-align: center;"> - 
-                      <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;margin-right: 30px;text-align: center;"><%= user.EQUIPO2 %><img src="<%= user.IMAGENEQUIPO2 %>" style="width:100px ; height:70px ; margin-left: 30px;" />
-                    </div>
-                </div>
-                <% } %>
-              <% }) %>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">EQUIPO 1</th>
+                    <th scope="col">MARCADOR</th>
+                    <th scope="col">EQUIPO 2</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                  <% predi.forEach((user)=> {%>
+                    <tr>
+                    <% if (user.GRUPO === 'H') { %>
+                      <td scope="row">
+                          <img src="<%= user.IMAGENEQUIPO1 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO1 %>
+                      </td>
+                      <td>
+                            <input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;">                      
+  
+                            <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;">               
+  
+                      </td>
+                      <td>
+                          <img src="<%= user.IMAGENEQUIPO2 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO2 %>
+                      </td>
+                    <% } %>
+                  </tr>
+                  <% }) %>                     
+                  
+                </tbody>
+              </table>
             </div>        
           </div>
-        </div>
-        <div class="col-3 ">
             <button type="submit" class="btn btn-primary btn-lg" type="button">Guardar</button>
             <a href="/" class="btn btn-danger btn-lg">Cancelar</a>
-        </div>
+          </div>
       </div>
     </form>
       
