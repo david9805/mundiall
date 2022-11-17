@@ -62,20 +62,23 @@ export const listContenedor = async (req,res) => {
         const pool = await getConnection();
         prediccion = await pool.request().        
         input("IDCLIENTE",sql.Numeric,result.recordset[0].IDCLIENTE).
-        query(queries.existePrediccion);                             
+        query(queries.existePrediccion);
+        let fecha = new Date();
 
-        console.log(prediccion.rowsAffected);
+        fecha = new Date(fecha - ((5 * 60) * 60000));
         if (prediccion.rowsAffected == 0 )
         {
             const crearPollaMundialista = await pool.request().        
             input("IDCLIENTE",sql.Numeric,result.recordset[0].IDCLIENTE).
+            input("MODIFICA",sql.VarChar,'N').
             query(queries.crearPollaMundialista); 
 
             prediccion = await pool.request().        
             input("IDCLIENTE",sql.Numeric,result.recordset[0].IDCLIENTE).
             query(queries.existePrediccion);
         }
-        res.render(path.join(ruta+'/view/prestamos.ejs'),({predi : prediccion.recordset}));        
+
+        res.render(path.join(ruta+'/view/prestamos.ejs'),({predi : prediccion.recordset,cliente:result.recordset[0],fecha:fecha}));        
     }
     catch (error)
     {
@@ -93,14 +96,17 @@ export const actualizarResultados = async (req,res) => {
             const prueba2 = "RESULTADO2"+user.IDPOLLAMUNDIALISTA;
             const campo1 = req.body[prueba1];
             const campo2 = req.body[prueba2];
-        
-            console.log(campo1,campo2,user.IDPOLLAMUNDIALISTA)
+            
+            if (campo1 != '' || campo2 != '')
+            {
             const pool = await getConnection();        
             await pool.request()
             .input("RESULTADO1",sql.Numeric,campo1)            
             .input("RESULTADO2",sql.Numeric,campo2)            
-            .input("IDPOLLAMUNDIALISTA",sql.Numeric,user.IDPOLLAMUNDIALISTA)        
+            .input("IDPOLLAMUNDIALISTA",sql.Numeric,user.IDPOLLAMUNDIALISTA)
+            .input("MODIFICA",sql.VarChar,'S')
             .query(queries.actualizarResultados);
+            }
         });
         
     

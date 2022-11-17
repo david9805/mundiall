@@ -107,7 +107,10 @@
           <button class="nav-link" id="nav-f-tab" data-bs-toggle="tab" data-bs-target="#nav-f" type="button" role="tab" aria-controls="nav-f" aria-selected="false">Grupo F</button>
           <button class="nav-link" id="nav-g-tab" data-bs-toggle="tab" data-bs-target="#nav-g" type="button" role="tab" aria-controls="nav-g" aria-selected="false">Grupo G</button>
           <button class="nav-link" id="nav-h-tab" data-bs-toggle="tab" data-bs-target="#nav-h" type="button" role="tab" aria-controls="nav-h" aria-selected="false">Grupo H</button>        
-        </div>
+          <% if (cliente) { %>
+            <button class="btn btn-outline-dark" ><%= cliente.NOMBRE1 %> <%= cliente.APELLIDO1 %></button>
+          <% } %>
+        </div>        
       </nav>
     <form action="/actualizarResultados" method ="POST">
       <div class="container">
@@ -133,9 +136,16 @@
                             <img src="<%= user.IMAGENEQUIPO1 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO1 %>
                         </td>
                         <td>
-                              <input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;">                      
+                              <% if (user.MODIFICA === 'S' ||  user.FECHAPARTIDO < fecha) { %>
+                                <input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;" readonly> -                     
 
-                              <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;">               
+                                <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;" readonly>               
+                              <% } else{ %>
+                                
+                                <input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;" > -                     
+
+                                <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;" >               
+                              <% } %>
 
                         </td>
                         <td>
@@ -170,9 +180,16 @@
                         <img src="<%= user.IMAGENEQUIPO1 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO1 %>
                     </td>
                     <td>
-                          <input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;">                      
+                      <% if (user.MODIFICA === 'S' ||  user.FECHAPARTIDO < fecha) { %>
+                        <input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;" readonly> -                     
 
-                          <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;">               
+                        <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;" readonly>               
+                      <% } else{ %>
+                        
+                        <input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;" > -                     
+
+                        <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;" >               
+                      <% } %>
 
                     </td>
                     <td>
@@ -206,9 +223,16 @@
                           <img src="<%= user.IMAGENEQUIPO1 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO1 %>
                       </td>
                       <td>
-                            <input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;">                      
-  
-                            <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;">               
+                        <% if (user.MODIFICA === 'S' ||  user.FECHAPARTIDO < fecha) { %>
+                          <input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;" readonly> -                     
+
+                          <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;" readonly>               
+                        <% } else{ %>
+                          
+                          <input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;" > -                     
+
+                          <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;" >               
+                        <% } %>
   
                       </td>
                       <td>
@@ -242,9 +266,16 @@
                           <img src="<%= user.IMAGENEQUIPO1 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO1 %>
                       </td>
                       <td>
-                            <input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;">                      
-  
-                            <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;">               
+                        <% if (user.MODIFICA === 'S' ||  user.FECHAPARTIDO < fecha) { %>
+                          <input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;" readonly> -                     
+
+                          <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;" readonly>               
+                        <% } else{ %>
+                          
+                          <input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;" > -                     
+
+                          <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;" >               
+                        <% } %>
   
                       </td>
                       <td>
@@ -278,9 +309,16 @@
                           <img src="<%= user.IMAGENEQUIPO1 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO1 %>
                       </td>
                       <td>
-                            <input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;">                      
-  
-                            <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;">               
+                        <% if (user.MODIFICA === 'S' ||  user.FECHAPARTIDO < fecha) { %>
+                          <input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;" readonly> -                     
+
+                          <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;" readonly>               
+                        <% } else{ %>
+                          
+                          <input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;" > -                     
+
+                          <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;" >               
+                        <% } %>
   
                       </td>
                       <td>
@@ -314,9 +352,16 @@
                           <img src="<%= user.IMAGENEQUIPO1 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO1 %>
                       </td>
                       <td>
-                            <input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;">                      
-  
-                            <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;">               
+                        <% if (user.MODIFICA === 'S' ||  user.FECHAPARTIDO < fecha) { %>
+                          <input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;" readonly> -                     
+
+                          <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;" readonly>               
+                        <% } else{ %>
+                          
+                          <input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;" > -                     
+
+                          <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;" >               
+                        <% } %>
   
                       </td>
                       <td>
@@ -350,9 +395,16 @@
                           <img src="<%= user.IMAGENEQUIPO1 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO1 %>
                       </td>
                       <td>
-                            <input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;">                      
-  
-                            <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;">               
+                        <% if (user.MODIFICA === 'S' ||  user.FECHAPARTIDO < fecha) { %>
+                          <input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;" readonly> -                     
+
+                          <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;" readonly>               
+                        <% } else{ %>
+                          
+                          <input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;" > -                     
+
+                          <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;" >               
+                        <% } %>            
   
                       </td>
                       <td>
@@ -386,9 +438,16 @@
                           <img src="<%= user.IMAGENEQUIPO1 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO1 %>
                       </td>
                       <td>
-                            <input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;">                      
-  
-                            <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;">               
+                        <% if (user.MODIFICA === 'S' ||  user.FECHAPARTIDO < fecha) { %>
+                          <input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;" readonly> -                     
+
+                          <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;" readonly>               
+                        <% } else{ %>
+                          
+                          <input  type="text" placeholder="0" name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;" > -                     
+
+                          <input  type="text" placeholder="0" name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;" >               
+                        <% } %>
   
                       </td>
                       <td>
@@ -403,7 +462,7 @@
             </div>        
           </div>
             <button type="submit" class="btn btn-primary btn-lg" type="button">Guardar</button>
-            <a href="/" class="btn btn-danger btn-lg">Cancelar</a>
+            <a href="/" class="btn btn-danger btn-lg">Salir</a>
           </div>
       </div>
     </form>
