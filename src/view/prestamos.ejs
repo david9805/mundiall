@@ -11,6 +11,7 @@
 <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <style>
 
  /*SPINNER*/
@@ -112,7 +113,7 @@
           <% } %>
         </div>        
       </nav>
-    <form action="/actualizarResultados" method ="POST">
+    <form id="myForm"  action="/actualizarResultados" method ="POST">
       <div class="container">
           
           <div class="tab-content  " id="nav-tabContent">
@@ -461,7 +462,7 @@
               </table>
             </div>        
           </div>
-            <button type="submit" class="btn btn-primary btn-lg" type="button">Guardar</button>
+            <button  class="btn btn-primary btn-lg" type="button" onclick="javascript:sendForm()">Guardar</button>
             <a href="/" class="btn btn-danger btn-lg">Salir</a>
           </div>
       </div>
@@ -469,5 +470,17 @@
       
     
 </body>
-</html>
+<script>
+  function sendForm() {
+    Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Registros Guardados',
+    showConfirmButton: false,
+    timer: 1500
+  },setTimeout(function(){
+    document.getElementById("myForm").submit()             
+    },1500))
+}
+</script>
 </html>

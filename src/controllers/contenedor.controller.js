@@ -111,7 +111,7 @@ export const actualizarResultados = async (req,res) => {
         
     
         
-        res.redirect(paginaWeb+'/');
+        res.redirect(paginaWeb+'/inicio');
               
                          
                  
