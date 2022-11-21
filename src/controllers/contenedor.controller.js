@@ -96,6 +96,8 @@ export const actualizarResultados = async (req,res) => {
             const prueba2 = "RESULTADO2"+user.IDPOLLAMUNDIALISTA;
             const campo1 = req.body[prueba1];
             const campo2 = req.body[prueba2];
+
+            console.log(campo1,campo2);
             
             if (campo1 != '' || campo2 != '')
             {
@@ -111,7 +113,7 @@ export const actualizarResultados = async (req,res) => {
         
     
         
-        res.redirect(paginaWeb+'/');s
+        res.redirect(paginaWeb+'/');
               
                          
                  
