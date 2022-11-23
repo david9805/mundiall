@@ -99,7 +99,7 @@ export const actualizarResultados = async (req,res) => {
 
             console.log(campo1,campo2);
             
-            if (campo1 != '' || campo2 != '')
+            if (campo1 != '' && campo2 != '')
             {
             const pool = await getConnection();        
             await pool.request()
