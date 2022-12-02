@@ -62,6 +62,7 @@ export const listContenedor = async (req,res) => {
         const pool = await getConnection();
         prediccion = await pool.request().        
         input("IDCLIENTE",sql.Numeric,result.recordset[0].IDCLIENTE).
+        input("GRUPO",sql.VarChar,'OCTAVOS').
         query(queries.existePrediccion);
         let fecha = new Date();
 
@@ -75,6 +76,7 @@ export const listContenedor = async (req,res) => {
 
             prediccion = await pool.request().        
             input("IDCLIENTE",sql.Numeric,result.recordset[0].IDCLIENTE).
+            input("GRUPO",sql.VarChar,'OCTAVOS').
             query(queries.existePrediccion);
         }
 

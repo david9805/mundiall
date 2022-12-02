@@ -100,14 +100,11 @@
 
     <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-          <button class="nav-link active" id="nav-a-tab" data-bs-toggle="tab" data-bs-target="#nav-a" type="button" role="tab" aria-controls="nav-a" aria-selected="true">Grupo A</button>
-          <button class="nav-link" id="nav-b-tab" data-bs-toggle="tab" data-bs-target="#nav-b" type="button" role="tab" aria-controls="nav-b" aria-selected="false">Grupo B</button>
-          <button class="nav-link" id="nav-c-tab" data-bs-toggle="tab" data-bs-target="#nav-c" type="button" role="tab" aria-controls="nav-c" aria-selected="false">Grupo C</button>
-          <button class="nav-link" id="nav-d-tab" data-bs-toggle="tab" data-bs-target="#nav-d" type="button" role="tab" aria-controls="nav-d" aria-selected="false">Grupo D</button>
-          <button class="nav-link" id="nav-e-tab" data-bs-toggle="tab" data-bs-target="#nav-e" type="button" role="tab" aria-controls="nav-e" aria-selected="false">Grupo E</button>
-          <button class="nav-link" id="nav-f-tab" data-bs-toggle="tab" data-bs-target="#nav-f" type="button" role="tab" aria-controls="nav-f" aria-selected="false">Grupo F</button>
-          <button class="nav-link" id="nav-g-tab" data-bs-toggle="tab" data-bs-target="#nav-g" type="button" role="tab" aria-controls="nav-g" aria-selected="false">Grupo G</button>
-          <button class="nav-link" id="nav-h-tab" data-bs-toggle="tab" data-bs-target="#nav-h" type="button" role="tab" aria-controls="nav-h" aria-selected="false">Grupo H</button>        
+          <button class="nav-link active" id="nav-a-tab" data-bs-toggle="tab" data-bs-target="#nav-a" type="button" role="tab" aria-controls="nav-a" aria-selected="true">Octavos</button>
+          <button class="nav-link" id="nav-b-tab" data-bs-toggle="tab" data-bs-target="#nav-b" type="button" role="tab" aria-controls="nav-b" aria-selected="false">Cuartos</button>
+          <button class="nav-link" id="nav-c-tab" data-bs-toggle="tab" data-bs-target="#nav-c" type="button" role="tab" aria-controls="nav-c" aria-selected="false">Semifinal</button>
+          <button class="nav-link" id="nav-d-tab" data-bs-toggle="tab" data-bs-target="#nav-d" type="button" role="tab" aria-controls="nav-d" aria-selected="false">Tercero</button>
+          <button class="nav-link" id="nav-e-tab" data-bs-toggle="tab" data-bs-target="#nav-e" type="button" role="tab" aria-controls="nav-e" aria-selected="false">Final</button>          
           <% if (cliente) { %>
             <button class="btn btn-outline-dark" ><%= cliente.NOMBRE1 %> <%= cliente.APELLIDO1 %></button>
           <% } %>
@@ -118,7 +115,7 @@
           
           <div class="tab-content  " id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-a" role="tabpanel" aria-labelledby="nav-a-tab" tabindex="0">
-            <H2>GRUPO A</H2>
+            <H2>OCTAVOS</H2>
             <hr>
                 <table class="table">
                   <thead>
@@ -132,7 +129,7 @@
                     
                     <% predi.forEach((user)=> {%>
                       <tr>
-                      <% if (user.GRUPO === 'A') { %>
+                      <% if (user.GRUPO === 'OCTAVOS') { %>
                         <td scope="row">
                             <img src="<%= user.IMAGENEQUIPO1 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO1 %>
                         </td>
@@ -161,7 +158,7 @@
                 
           </div>
             <div class="tab-pane fade" id="nav-b" role="tabpanel" aria-labelledby="nav-b-tab" tabindex="0">
-            <H2>GRUPO B</H2>
+            <H2>CUARTOS</H2>
             <hr>
               
             <table class="table">
@@ -176,7 +173,7 @@
                 
                 <% predi.forEach((user)=> {%>
                   <tr>
-                  <% if (user.GRUPO === 'B') { %>
+                  <% if (user.GRUPO === 'CUARTOS') { %>
                     <td scope="row">
                         <img src="<%= user.IMAGENEQUIPO1 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO1 %>
                     </td>
@@ -204,7 +201,7 @@
             </table>
             </div>
             <div class="tab-pane fade" id="nav-c" role="tabpanel" aria-labelledby="nav-c-tab" tabindex="0">
-              <H2>GRUPO C</H2>
+              <H2>SEMIFINALES</H2>
               <hr>
               
               <table class="table">
@@ -219,7 +216,7 @@
                   
                   <% predi.forEach((user)=> {%>
                     <tr>
-                    <% if (user.GRUPO === 'C') { %>
+                    <% if (user.GRUPO === 'SEMIFINAL') { %>
                       <td scope="row">
                           <img src="<%= user.IMAGENEQUIPO1 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO1 %>
                       </td>
@@ -247,7 +244,7 @@
               </table>
             </div>
             <div class="tab-pane fade" id="nav-d" role="tabpanel" aria-labelledby="nav-d-tab" tabindex="0">
-              <H2>GRUPO D</H2>
+              <H2>TERCERO Y CUARTO PUESTO</H2>
               <hr>
               
               <table class="table">
@@ -262,7 +259,7 @@
                   
                   <% predi.forEach((user)=> {%>
                     <tr>
-                    <% if (user.GRUPO === 'D') { %>
+                    <% if (user.GRUPO === 'TERCERO') { %>
                       <td scope="row">
                           <img src="<%= user.IMAGENEQUIPO1 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO1 %>
                       </td>
@@ -290,7 +287,7 @@
               </table>
             </div>
             <div class="tab-pane fade" id="nav-e" role="tabpanel" aria-labelledby="nav-e-tab" tabindex="0">
-              <H2>GRUPO E</H2>
+              <H2>FINAL</H2>
               <hr>
               
               <table class="table">
@@ -305,7 +302,7 @@
                   
                   <% predi.forEach((user)=> {%>
                     <tr>
-                    <% if (user.GRUPO === 'E') { %>
+                    <% if (user.GRUPO === 'FINAL') { %>
                       <td scope="row">
                           <img src="<%= user.IMAGENEQUIPO1 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO1 %>
                       </td>
@@ -331,135 +328,7 @@
                   
                 </tbody>
               </table>
-            </div>
-            <div class="tab-pane fade" id="nav-f" role="tabpanel" aria-labelledby="nav-f-tab" tabindex="0">
-              <H2>GRUPO F</H2>
-              <hr>
-              
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">EQUIPO 1</th>
-                    <th scope="col">MARCADOR</th>
-                    <th scope="col">EQUIPO 2</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  
-                  <% predi.forEach((user)=> {%>
-                    <tr>
-                    <% if (user.GRUPO === 'F') { %>
-                      <td scope="row">
-                          <img src="<%= user.IMAGENEQUIPO1 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO1 %>
-                      </td>
-                      <td>
-                        <% if (user.MODIFICA === 'S' ||  user.FECHAPARTIDO < fecha) { %>
-                          <input  type="text"  name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;" readonly> -                     
-
-                          <input  type="text"  name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;" readonly>               
-                        <% } else{ %>
-                          
-                          <input  type="text"  name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;" > -                     
-
-                          <input  type="text"  name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;" >               
-                        <% } %>
-  
-                      </td>
-                      <td>
-                          <img src="<%= user.IMAGENEQUIPO2 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO2 %>
-                      </td>
-                    <% } %>
-                  </tr>
-                  <% }) %>                     
-                  
-                </tbody>
-              </table>
-            </div>
-            <div class="tab-pane fade" id="nav-g" role="tabpanel" aria-labelledby="nav-g-tab" tabindex="0">
-              <H2>GRUPO G</H2>
-              <hr>
-              
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">EQUIPO 1</th>
-                    <th scope="col">MARCADOR</th>
-                    <th scope="col">EQUIPO 2</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  
-                  <% predi.forEach((user)=> {%>
-                    <tr>
-                    <% if (user.GRUPO === 'G') { %>
-                      <td scope="row">
-                          <img src="<%= user.IMAGENEQUIPO1 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO1 %>
-                      </td>
-                      <td>
-                        <% if (user.MODIFICA === 'S' ||  user.FECHAPARTIDO < fecha) { %>
-                          <input  type="text"  name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;" readonly> -                     
-
-                          <input  type="text"  name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;" readonly>               
-                        <% } else{ %>
-                          
-                          <input  type="text"  name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;" > -                     
-
-                          <input  type="text"  name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;" >               
-                        <% } %>            
-  
-                      </td>
-                      <td>
-                          <img src="<%= user.IMAGENEQUIPO2 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO2 %>
-                      </td>
-                    <% } %>
-                  </tr>
-                  <% }) %>                     
-                  
-                </tbody>
-              </table>
-            </div>
-            <div class="tab-pane fade" id="nav-h" role="tabpanel" aria-labelledby="nav-h-tab" tabindex="0">
-              <H2>GRUPO H</H2>
-              <hr>
-              
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">EQUIPO 1</th>
-                    <th scope="col">MARCADOR</th>
-                    <th scope="col">EQUIPO 2</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  
-                  <% predi.forEach((user)=> {%>
-                    <tr>
-                    <% if (user.GRUPO === 'H') { %>
-                      <td scope="row">
-                          <img src="<%= user.IMAGENEQUIPO1 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO1 %>
-                      </td>
-                      <td>
-                        <% if (user.MODIFICA === 'S' ||  user.FECHAPARTIDO < fecha) { %>
-                          <input  type="text"  name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;" readonly> -                     
-
-                          <input  type="text"  name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;" readonly>               
-                        <% } else{ %>
-                          
-                          <input  type="text"  name="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO1<%= user.IDPOLLAMUNDIALISTA %>"  value="<%= user.RESULTADO1 %>" style="width: 30px;border-radius: 15px;text-align: center;" > -                     
-
-                          <input  type="text"  name="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" id="RESULTADO2<%= user.IDPOLLAMUNDIALISTA %>" value="<%= user.RESULTADO2 %>" style="width: 30px;border-radius: 15px;text-align: center;" >               
-                        <% } %>
-  
-                      </td>
-                      <td>
-                          <img src="<%= user.IMAGENEQUIPO2 %>" style="width:100px ; height:70px ; margin-right: 30px;" /><%= user.EQUIPO2 %>
-                      </td>
-                    <% } %>
-                  </tr>
-                  <% }) %>                     
-                  
-                </tbody>
-              </table>
+                                                
             </div>        
           </div>
             <button  class="btn btn-primary btn-lg" type="button" onclick="javascript:sendForm()">Guardar</button>
